@@ -1,0 +1,26 @@
+{
+  "name": "hirpics-api",
+  "version": "0.0.1",
+  "description": "The API server for the hirpics mobile app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "hirpics",
+    "pictures",
+    "photos",
+    "app"
+  ],
+  "author": "Allan Baptista (allan.marques@ymail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "multer": "^1.0.6",
+    "mysql": "^2.9.0",
+    "node-geocoder": "^3.4.0"
+  }
+}
