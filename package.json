@@ -2,6 +2,7 @@
   "name": "hirpics-api",
   "version": "0.0.1",
   "description": "The API server for the hirpics mobile app.",
+  "repository": "https://m4n3z40@bitbucket.org/m4n3z40/hirpics-api.git",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
