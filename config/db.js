@@ -1,18 +1,16 @@
 'use strict';
 
-var config = {
-    connectionLimit: 100,
-    host: '127.0.0.1',
-    user: 'root',
-    password: '',
-    database: 'hirpics',
-    port: 3307,
-    debug: true
-};
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-if (process.env.NODE_ENV === 'production') {
+var jsonConfig = require('./database')[IS_PRODUCTION ? 'prod' : 'dev'];
+
+var config = Object.assign({}, jsonConfig, {
+    connectionLimit: 100,
+    debug: true
+});
+
+if (IS_PRODUCTION) {
     config.debug = false;
-    config.port = 3306;
 }
 
 module.exports = config;

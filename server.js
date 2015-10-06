@@ -8,6 +8,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('./utils/db').middleware());
+app.use(require('./utils/geocoder').middleware());
 
 app.get('/', function (req, res) {
     res.send('HirPics Api Server - nothing to see here.');

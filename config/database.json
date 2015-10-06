@@ -1,0 +1,18 @@
+{
+    "dev": {
+        "driver": "mysql",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "database": "hirpics",
+        "port": 3307
+    },
+    "prod": {
+        "driver": "mysql",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "database": "hirpics",
+        "port": 3306
+    }
+}
