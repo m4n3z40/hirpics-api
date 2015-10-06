@@ -10,11 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('./utils/db').middleware());
 app.use(require('./utils/geocoder').middleware());
 
-app.get('/', function (req, res) {
-    res.send('HirPics Api Server - nothing to see here.');
-});
+app.get('/', (req, res) => res.send('HirPics Api Server - nothing to see here.'));
 
-var server = app.listen(process.env.PORT || 3000, function () {
+var server = app.listen(process.env.PORT || 3000, () => {
     var host = server.address().address,
         port = server.address().port;
 
