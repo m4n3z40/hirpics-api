@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate-up": "npm run migrate up",
     "migrate-down": "npm run migrate down",
-    "migrate": "./node_modules/db-migrate/bin/db-migrate --config ./config/database.json"
+    "migrate": "db-migrate --config ./config/database.json",
+    "start": "node ./server.js",
+    "stop": "if pkill -f \"node ./server.js\"; then echo \"Last process kiled.\"; fi;",
+    "watch": "watch \"npm stop && npm start\" ."
   },
   "keywords": [
     "API",
@@ -27,5 +30,8 @@
     "multer": "^1.0.6",
     "mysql": "^2.9.0",
     "node-geocoder": "^3.4.0"
+  },
+  "devDependencies": {
+    "watch": "^0.16.0"
   }
 }
