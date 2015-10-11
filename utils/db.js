@@ -45,6 +45,7 @@ function middleware() {
     return (req, res, next) => {
         res.db = res.db || {};
 
+        res.db.getConnection = getConnection;
         res.db.query = query;
 
         next();

@@ -27,6 +27,9 @@
     "body-parser": "^1.14.1",
     "db-migrate": "^0.9.23",
     "express": "^4.13.3",
+    "helmet": "^0.12.0",
+    "mime-types": "^2.1.7",
+    "mkdirp": "^0.5.1",
     "multer": "^1.0.6",
     "mysql": "^2.9.0",
     "node-geocoder": "^3.4.0"
