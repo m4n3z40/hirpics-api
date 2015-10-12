@@ -52,8 +52,14 @@ exports.up = function (db, callback) {
             streetName: {type: type.STRING, length: 140, notNull: true},
             streetNumber: {type: type.STRING, length: 10, notNull: true},
             zipcode: {type: type.STRING, length: 10, notNull: true},
-            administrativeLevels: {type: type.STRING, length: 450, notNull: true},
-            extras: {type: type.STRING, length: 450, notNull: true},
+            admLevel1Short: {type: type.STRING, length: 45, notNull: true, defaultValue: ''},
+            admLevel1Long: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
+            admLevel2Short: {type: type.STRING, length: 45, notNull: true, defaultValue: ''},
+            admLevel2Long: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
+            premise: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
+            subpremise: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
+            neighborhood: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
+            establishment: {type: type.STRING, length: 140, notNull: true, defaultValue: ''},
             createdAt: {type: type.DATE_TIME, notNull: true, defaultValue: new String('CURRENT_TIMESTAMP')},
             updatedAt: {type: type.DATE_TIME, notNull: false, defaultValue: null}
         }, createPicsTable);

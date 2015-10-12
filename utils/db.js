@@ -25,20 +25,23 @@ function getConnection() {
     });
 }
 
-function query(query, params) {
-    return getConnection().then(connection => {
-        return new Promise((resolve, reject) => {
-            connection.query(query, params, (err, result) => {
-                connection.release();
+function queryWithConnection(connection, query, params) {
+    return new Promise((resolve, reject) => {
+        connection.query(query, params, (err, result) => {
+            connection.release();
 
-                if (err) {
-                    return reject(err);
-                }
+            if (err) {
+                return reject(err);
+            }
 
-                resolve(result);
-            });
+            resolve(result);
         });
     });
+}
+
+function query(query, params) {
+    return getConnection()
+        .then(connection => queryWithConnection(connection, query, params));
 }
 
 function middleware() {
@@ -46,6 +49,7 @@ function middleware() {
         res.db = res.db || {};
 
         res.db.getConnection = getConnection;
+        res.db.queryWithConnection = queryWithConnection;
         res.db.query = query;
 
         next();
@@ -54,6 +58,7 @@ function middleware() {
 
 module.exports = {
     getConnection: getConnection,
+    queryWithConnection: queryWithConnection,
     query: query,
     middleware: middleware
 };

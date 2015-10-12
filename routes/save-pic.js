@@ -39,21 +39,29 @@ function handleErrors(req, res, errors) {
 }
 
 function saveNewPlace(req, res) {
-    let place = req.body.place;
+    let place = req.body.place,
+        admLevels = place.administrativeLevels,
+        extra = place.extra;
 
     return res.db.query('INSERT INTO places SET ?', {
-        googlePlaceId: place.extra.googlePlaceId,
-        formattedAddress: place.formattedAddress,
-        latitude: place.latitude,
-        longitude: place.longitude,
-        country: place.country,
-        countryCode: place.countryCode,
-        city: place.city,
-        streetName: place.streetName,
-        streetNumber: place.streetNumber,
-        zipcode: place.zipcode,
-        administrativeLevels: JSON.stringify(place.administrativeLevels),
-        extras: JSON.stringify(place.extra)
+        googlePlaceId: extra.googlePlaceId || '',
+        formattedAddress: place.formattedAddress || '',
+        latitude: place.latitude || '',
+        longitude: place.longitude || '',
+        country: place.country || '',
+        countryCode: place.countryCode || '',
+        city: place.city || '',
+        streetName: place.streetName || '',
+        streetNumber: place.streetNumber || '',
+        zipcode: place.zipcode || '',
+        admLevel1Short: admLevels.level1short || '',
+        admLevel1Long: admLevels.level1long || '',
+        admLevel2Short: admLevels.level2short || '',
+        admLevel2Long: admLevels.level2long || '',
+        premise: extra.premise || '',
+        subpremise: extra.subpremise || '',
+        neighborhood: extra.neighborhood || '',
+        establishment: extra.establishment || ''
     }).then(
         result => result.insertId,
         error => { throw error; }

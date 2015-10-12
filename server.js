@@ -25,6 +25,8 @@ app.use('/api', getUserPicsApi);
 app.use('/api', getPlacePicsApi);
 app.use('/api', multer.single('pic'), savePicApi);
 
+app.use('/public/pics', express.static('./pics'));
+
 app.get('/', (req, res) => res.send('HirPics Api Server - nothing to see here.'));
 
 var server = app.listen(process.env.PORT || 3000, () => {
