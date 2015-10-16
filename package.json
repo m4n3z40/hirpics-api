@@ -8,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate-up": "npm run migrate up",
     "migrate-down": "npm run migrate down",
+    "migrate-up-prod": "npm run migrate up -- -e prod",
+    "migrate-down-prod": "npm run migrate down -- -e prod",
     "migrate": "db-migrate --config ./config/database.json",
     "start": "node ./server.js",
     "stop": "if pkill -f \"node ./server.js\"; then echo \"Last process kiled.\"; fi;",
