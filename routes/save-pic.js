@@ -35,6 +35,8 @@ function handleErrors(req, res, errors) {
         fs.unlink(req.file.path);
     }
 
+    console.error('Errors while saving pic: ', errors);
+
     res.status(500).json({status: 'Error', errors});
 }
 
@@ -82,8 +84,12 @@ function getPlaceId(req, res) {
         }, error => handleErrors(req, res, [error.message]))
         .then(rows => {
             if (!rows || !rows.length) {
+                console.log('Place not found, creating new one: ', req.body.place);
+
                 return saveNewPlace(req, res);
             }
+
+            console.log('Place already exists: place id ', rows);
 
             return rows[0].id;
         }, error => handleErrors(req, res, [error.message]))
@@ -141,16 +147,20 @@ router.post('/pics', (req, res) => {
         .then(placeId => {
             req.body.place.id = placeId;
 
+            console.log('Saving image file: ', req.file);
+
             return moveUploadedPic(req.file, `place_${placeId}`);
         }, error => handleErrors(req, res, [error.message]))
-        .then(
-            picpath => saveNewPic(req, res, picpath),
-            error => handleErrors(req, res, [error.message])
-        )
-        .then(
-            () => res.json({status: 'Ok', errors: null}),
-            error => handleErrors(req, res, [error.message])
-        );
+        .then(picpath => {
+            console.log('Saving pic data: ', req.body);
+
+            return saveNewPic(req, res, picpath);
+        }, error => handleErrors(req, res, [error.message]))
+        .then(() => {
+            console.log('Pic saved successfuly.');
+
+            res.json({status: 'Ok', errors: null});
+        }, error => handleErrors(req, res, [error.message]));
 });
 
 module.exports = router;
