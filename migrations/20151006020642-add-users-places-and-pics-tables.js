@@ -42,8 +42,8 @@ exports.up = function (db, callback) {
                 length: 11,
                 notNull: true
             },
-            googlePlaceId: {type: type.STRING, length: 80, notNull: true},
-            formattedAddress: {type: type.STRING, length: 255, notNull: true},
+            googlePlaceId: {type: type.STRING, length: 255, notNull: true},
+            formattedAddress: {type: type.STRING, length: 500, notNull: true},
             latitude: {type: type.DECIMAL, length: [10, 8], notNull: true},
             longitude: {type: type.DECIMAL, length: [11, 8], notNull: true},
             country: {type: type.STRING, length: 45, notNull: true},
@@ -99,7 +99,7 @@ exports.up = function (db, callback) {
                     mapping: 'id'
                 }
             },
-            googlePlaceId: {type: type.STRING, length: 80, notNull: true},
+            googlePlaceId: {type: type.STRING, length: 255, notNull: true},
             status: {type: type.STRING, length: 140, notNull: false},
             path: {type: type.STRING, length: 255, notNull: true},
             latitude: {type: type.DECIMAL, length: [10, 8], notNull: true},
