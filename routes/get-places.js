@@ -26,18 +26,10 @@ const PLACE_COLUMNS = [
     'updatedAt'
 ];
 
-function deserializePlaceExtras(place) {
+function convertDistanceToKm(place) {
     if (place.distance) {
         // Converting to km
         place.distance = Math.sqrt(place.distance) * 1.609344;
-    }
-
-    try {
-        place.administrativeLevels = JSON.parse(place.administrativeLevels);
-        place.extra = JSON.parse(place.extra);
-    } catch(e) {
-        console.error(e.message, '\n', place);
-        debugger;
     }
 
     return place;
@@ -60,7 +52,7 @@ router.get('/places/:placeId', (req, res) => {
                 return res.status(404).json({status: 'Error', errors: ['Place not found.']});
             }
 
-            res.json({status: 'Ok', errors: [], place: deserializePlaceExtras(rows[0])});
+            res.json({status: 'Ok', errors: [], place: rows[0]});
         },
         err => handlerErrors(res, err)
     );
@@ -71,7 +63,7 @@ router.get('/places', (req, res) => {
         'SELECT ' + PLACE_COLUMNS.join(',') + ' ' +
         'FROM places'
     ).then(
-        rows => res.json({status: 'Ok', errors: [], places: rows.map(deserializePlaceExtras)}),
+        rows => res.json({status: 'Ok', errors: [], places: rows}),
         err => handlerErrors(res, err)
     );
 });
@@ -91,7 +83,7 @@ router.get('/places/nearest/:lat/:lon/:maxDistance?', (req, res) => {
         'ORDER BY distance ' +
         'LIMIT ' + maxResults
     ).then(
-        rows => res.json({status: 'Ok', errors: [], places: rows.map(deserializePlaceExtras)}),
+        rows => res.json({status: 'Ok', errors: [], places: rows.map(convertDistanceToKm)}),
         err => handlerErrors(res, err)
     );
 });

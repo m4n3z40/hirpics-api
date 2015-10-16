@@ -28,4 +28,24 @@ router.get('/users', (req, res) => {
     );
 });
 
+router.post('/users', (req, res) => {
+    let user = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        profilePicPath: req.body.profilePicPath,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    };
+
+    console.log(user);
+
+    res.db.query('INSERT INTO users set ?', user).then(result => {
+        user.id = result.insertId;
+
+        res.json({status: 'Ok', errors: [], user: user});
+    })
+    .catch(err => res.status(500).json({status: 'Error', errors: [err.message]}));
+});
+
 module.exports = router;

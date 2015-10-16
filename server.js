@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var multer = require('multer')({dest: './uploads/'});
 
-var getUsersApi = require('./routes/get-users');
+var UsersApi = require('./routes/users');
 var getPlacesApi = require('./routes/get-places');
 var getUserPicsApi = require('./routes/get-user-pics');
 var getPlacePicsApi = require('./routes/get-place-pics');
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('./utils/db').middleware());
 app.use(require('./utils/geocoder').middleware());
 
-app.use('/api', getUsersApi);
+app.use('/api', UsersApi);
 app.use('/api', getPlacesApi);
 app.use('/api', getUserPicsApi);
 app.use('/api', getPlacePicsApi);
