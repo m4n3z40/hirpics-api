@@ -7,12 +7,5 @@
         "database": "hirpics",
         "port": 3307
     },
-    "prod": {
-        "driver": "mysql",
-        "host": "127.0.0.1",
-        "user": "root",
-        "password": "",
-        "database": "hirpics",
-        "port": 3306
-    }
+    "prod": "mysql://bee8ce6fcd6b26:b024fc91@us-cdbr-iron-east-03.cleardb.net/heroku_f7cdaa21355316a?reconnect=true"
 }
