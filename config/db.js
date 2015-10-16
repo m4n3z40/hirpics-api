@@ -13,8 +13,4 @@ if (typeof jsonConfig === 'string') {
     });
 }
 
-if (IS_PRODUCTION) {
-    config.debug = false;
-}
-
 module.exports = config;
