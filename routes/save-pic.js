@@ -61,7 +61,9 @@ function saveNewPlace(req, res) {
         premise: extra.premise || '',
         subpremise: extra.subpremise || '',
         neighborhood: extra.neighborhood || '',
-        establishment: extra.establishment || ''
+        establishment: extra.establishment || '',
+        createdAt: new Date(),
+        updatedAt: new Date()
     }).then(
         result => result.insertId,
         error => { throw error; }
@@ -122,7 +124,9 @@ function saveNewPic(req, res, picpath) {
         status: body.status,
         path: picpath,
         latitude: body.lat,
-        longitude: body.lon
+        longitude: body.lon,
+        createdAt: new Date(),
+        updatedAt: new Date()
     });
 }
 
