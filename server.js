@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('./utils/db').middleware());
 app.use(require('./utils/geocoder').middleware());
 
+app.use('/api', cors());
 app.use('/api', UsersApi);
 app.use('/api', getPlacesApi);
 app.use('/api', getUserPicsApi);

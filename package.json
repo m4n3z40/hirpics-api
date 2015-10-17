@@ -27,6 +27,7 @@
   "dependencies": {
     "bluebird": "^2.10.2",
     "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
     "db-migrate": "^0.9.23",
     "express": "^4.13.3",
     "helmet": "^0.12.0",
