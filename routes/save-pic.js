@@ -152,6 +152,8 @@ router.post('/pics', (req, res) => {
             return moveUploadedPic(req.file, `place_${placeId}`);
         }, error => handleErrors(req, res, [error.message]))
         .then(picpath => {
+            req.body.picPath = picpath;
+
             console.log('Saving pic data: ', req.body);
 
             return saveNewPic(req, res, picpath);
@@ -160,7 +162,13 @@ router.post('/pics', (req, res) => {
             console.log('Pic saved successfuly.');
 
             res.json({status: 'Ok', errors: null});
-        }, error => handleErrors(req, res, [error.message]));
+
+            return res.db.query(
+                'UPDATE places SET ? WHERE id=?',
+                [{lastPicPath: req.body.picPath, updatedAt: new Date()}, req.body.place.id]
+            );
+        }, error => handleErrors(req, res, [error.message]))
+        .catch(error => console.error('Error after sending response to client: ', error));
 });
 
 module.exports = router;

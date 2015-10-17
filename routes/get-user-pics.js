@@ -32,6 +32,7 @@ const PLACE_COLUMNS = [
     'subpremise',
     'neighborhood',
     'establishment',
+    'lastPicPath',
     'createdAt',
     'updatedAt'
 ];
