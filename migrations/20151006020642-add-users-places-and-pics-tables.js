@@ -61,6 +61,7 @@ exports.up = function (db, callback) {
             neighborhood: {type: type.STRING, length: 90, notNull: true, defaultValue: ''},
             establishment: {type: type.STRING, length: 140, notNull: true, defaultValue: ''},
             lastPicPath: {type: type.STRING, length: 255, notNull: false},
+            picsCount: {type: type.INTEGER, unsigned: true, length: 10, notNull: true },
             createdAt: {type: type.DATE_TIME, notNull: true, defaultValue: new String('CURRENT_TIMESTAMP')},
             updatedAt: {type: type.DATE_TIME, notNull: false, defaultValue: null}
         }, createPicsTable);

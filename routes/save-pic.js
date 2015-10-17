@@ -64,6 +64,7 @@ function saveNewPlace(req, res) {
         subpremise: extra.subpremise || '',
         neighborhood: extra.neighborhood || '',
         establishment: extra.establishment || '',
+        picsCount: 0,
         createdAt: new Date(),
         updatedAt: new Date()
     }).then(
@@ -78,7 +79,7 @@ function getPlaceId(req, res) {
             req.body.place = results[0];
 
             return res.db.query(
-                'SELECT id FROM places WHERE googlePlaceId=?',
+                'SELECT id, picsCount FROM places WHERE googlePlaceId=?',
                 [req.body.place.extra.googlePlaceId]
             );
         }, error => handleErrors(req, res, [error.message]))
@@ -86,10 +87,14 @@ function getPlaceId(req, res) {
             if (!rows || !rows.length) {
                 console.log('Place not found, creating new one: ', req.body.place);
 
+                req.body.place.picsCount = 0;
+
                 return saveNewPlace(req, res);
             }
 
             console.log('Place already exists: place id ', rows);
+
+            req.body.place.picsCount = rows[0].picsCount;
 
             return rows[0].id;
         }, error => handleErrors(req, res, [error.message]))
@@ -165,7 +170,11 @@ router.post('/pics', (req, res) => {
 
             return res.db.query(
                 'UPDATE places SET ? WHERE id=?',
-                [{lastPicPath: req.body.picPath, updatedAt: new Date()}, req.body.place.id]
+                [{
+                    lastPicPath: req.body.picPath,
+                    picsCount: req.body.place.picsCount + 1,
+                    updatedAt: new Date()
+                }, req.body.place.id]
             );
         }, error => handleErrors(req, res, [error.message]))
         .catch(error => console.error('Error after sending response to client: ', error));

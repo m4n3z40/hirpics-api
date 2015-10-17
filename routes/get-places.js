@@ -23,6 +23,7 @@ const PLACE_COLUMNS = [
     'neighborhood',
     'establishment',
     'lastPicPath',
+    'picsCount',
     'createdAt',
     'updatedAt'
 ];
