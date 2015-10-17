@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var multer = require('multer')({dest: './uploads/'});
+var cors = require('cors');
 
 var UsersApi = require('./routes/users');
 var getPlacesApi = require('./routes/get-places');
