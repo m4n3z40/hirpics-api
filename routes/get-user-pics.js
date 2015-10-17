@@ -81,7 +81,7 @@ router.get('/users/:userId/places/pics', (req, res) => {
 
             pics.forEach(pic => placesHash[pic.placeId].pics.push(pic));
 
-            return Object.keys(placesHash).map(key => placesHash[key]);
+            return Object.keys(placesHash).map(key => placesHash[key]).reverse();
         });
     })
     .then(
