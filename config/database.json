@@ -7,5 +7,5 @@
         "database": "hirpics",
         "port": 3307
     },
-    "prod": "mysql://bee8ce6fcd6b26:b024fc91@us-cdbr-iron-east-03.cleardb.net/heroku_f7cdaa21355316a?reconnect=true"
+    "prod": "mysql://bbf8fb7c51704e:521a11c9@us-cdbr-iron-east-03.cleardb.net/heroku_cee35a56d6fb08f?reconnect=true"
 }
