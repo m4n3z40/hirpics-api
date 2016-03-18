@@ -36,3 +36,6 @@ node_modules
 # dynamic dirs
 uploads
 pics
+
+# Database configuration
+config/database.json

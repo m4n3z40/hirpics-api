@@ -15,7 +15,7 @@ exports.up = function (db, callback) {
         email: {type: type.STRING, length: 140, notNull: true},
         password: {type: type.STRING, length: 128, notNull: true},
         profilePicPath: {type: type.STRING, length: 255, notNull: false},
-        createdAt: {type: type.DATE_TIME, notNull: true, defaultValue: new String('CURRENT_TIMESTAMP')},
+        createdAt: {type: type.DATE_TIME, notNull: false, defaultValue: null},
         updatedAt: {type: type.DATE_TIME, notNull: false, defaultValue: null}
     }, insertDefaultUser);
 
@@ -62,7 +62,7 @@ exports.up = function (db, callback) {
             establishment: {type: type.STRING, length: 140, notNull: true, defaultValue: ''},
             lastPicPath: {type: type.STRING, length: 255, notNull: false},
             picsCount: {type: type.INTEGER, unsigned: true, length: 10, notNull: true },
-            createdAt: {type: type.DATE_TIME, notNull: true, defaultValue: new String('CURRENT_TIMESTAMP')},
+            createdAt: {type: type.DATE_TIME, notNull: false, defaultValue: null},
             updatedAt: {type: type.DATE_TIME, notNull: false, defaultValue: null}
         }, createPicsTable);
     }
@@ -106,7 +106,7 @@ exports.up = function (db, callback) {
             path: {type: type.STRING, length: 255, notNull: true},
             latitude: {type: type.DECIMAL, length: [10, 8], notNull: true},
             longitude: {type: type.DECIMAL, length: [11, 8], notNull: true},
-            createdAt: {type: type.DATE_TIME, notNull: true, defaultValue: new String('CURRENT_TIMESTAMP')},
+            createdAt: {type: type.DATE_TIME, notNull: false, defaultValue: null},
             updatedAt: {type: type.DATE_TIME, notNull: false, defaultValue: null}
         }, callback);
     }

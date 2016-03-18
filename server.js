@@ -35,5 +35,5 @@ var server = app.listen(process.env.PORT || 3000, () => {
     var host = server.address().address,
         port = server.address().port;
 
-    console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Hirpics-Api listening at http://%s:%s', host, port);
 });

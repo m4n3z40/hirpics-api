@@ -1,8 +1,8 @@
 {
   "name": "hirpics-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "The API server for the hirpics mobile app.",
-  "repository": "https://m4n3z40@bitbucket.org/m4n3z40/hirpics-api.git",
+  "repository": "git@github.com:m4n3z40/hirpics-api.git",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,17 +25,17 @@
   "author": "Allan Baptista (allan.marques@ymail.com)",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^2.10.2",
-    "body-parser": "^1.14.1",
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "db-migrate": "^0.9.23",
-    "express": "^4.13.3",
-    "helmet": "^0.12.0",
-    "mime-types": "^2.1.7",
+    "express": "^4.13.4",
+    "helmet": "^1.3.0",
+    "mime-types": "^2.1.10",
     "mkdirp": "^0.5.1",
-    "multer": "^1.0.6",
-    "mysql": "^2.9.0",
-    "node-geocoder": "^3.4.0"
+    "multer": "^1.1.0",
+    "mysql": "^2.10.2",
+    "node-geocoder": "^3.9.0"
   },
   "devDependencies": {
     "watch": "^0.16.0"

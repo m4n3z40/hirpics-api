@@ -4,7 +4,7 @@ var config = {
     provider: 'google',
     adapter: 'https',
     extra: {
-        apiKey: 'AIzaSyASbVR0vZMbG3jytvW7FpvFJZJuB3_chBE'
+        apiKey: null // Set your google geocoder API credencial here
     }
 };
 
